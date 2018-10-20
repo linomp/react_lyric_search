@@ -3,6 +3,7 @@ import axios from "axios";
 import Spinner from "../layout/Spinner";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
+import Text from "react-format-text";
 
 export default class Lyrics extends Component {
   // we only need this info for this component.
@@ -54,7 +55,7 @@ export default class Lyrics extends Component {
 
   render() {
     const { track, lyrics } = this.state;
-    //console.log(this.state);
+    console.log(this.state);
     // check for empty object: Object.keys(track).length === 0
     if (
       track === undefined ||
@@ -70,12 +71,14 @@ export default class Lyrics extends Component {
             Go Back
           </Link>
           <div className="card">
-            <h5 className="card-header">
+            <h5 className="card-header text-center">
               {track.track_name} by{" "}
               <span className="text-secondary">{track.artist_name}</span>
             </h5>
             <div className="card-body">
-              <p className="card-text">{lyrics.lyrics_body}</p>
+              <p className="card-text text-center">
+                <Text>{lyrics.lyrics_body}</Text>
+              </p>
             </div>
           </div>
           <ul className="list-group mt-3">
@@ -84,10 +87,10 @@ export default class Lyrics extends Component {
             </li>
             <li className="list-group-item">
               <strong>Song Genre</strong>:{" "}
-              {
-                track.primary_genres.music_genre_list[0].music_genre
-                  .music_genre_name
-              }
+              {track.primary_genres.music_genre_list.length > 0
+                ? track.primary_genres.music_genre_list[0].music_genre
+                    .music_genre_name
+                : "n/a"}
             </li>
             <li className="list-group-item">
               <strong>Explicit</strong>: {track.explicit === 0 ? "No" : "Yes"}

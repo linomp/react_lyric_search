@@ -5,10 +5,31 @@ import axios from "axios";
 
 const Context = React.createContext();
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    // the response we get in the search component will be sent as payload
+    case "SEARCH_TRACKS":
+      return {
+        ...state,
+        track_list: action.payload,
+        heading: "Search Results"
+      };
+    default:
+      return state;
+  }
+};
+
 export class Provider extends Component {
+  // this state gets passed down to any consumer
   state = {
     track_list: [],
-    heading: "Top 10 Tracks"
+    heading: "Top 10 Tracks",
+    // this will allow us to have a reducer which manipulates the global state
+    // from every consumer component. inside the reducer, the action type will be evaluated
+    // to decide what to manipulate and how.
+    // From the consumer components we need to call this dispatch method,
+    // and send action type + payload
+    dispatch: action => this.setState(state => reducer(state, action))
   };
 
   componentDidMount() {
