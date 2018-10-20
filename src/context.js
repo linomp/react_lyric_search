@@ -21,7 +21,8 @@ export class Provider extends Component {
         proxy +
           rootURL +
           chartTracksGet +
-          `&apikey=${process.env.REACT_APP_MM_KEY}`
+          `&apikey=${process.env.REACT_APP_MM_KEY}`,
+        { crossdomain: true }
       )
       .then(res => {
         //console.log(res.data);
