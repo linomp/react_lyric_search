@@ -44,8 +44,8 @@ export class Provider extends Component {
   };
 
   componentDidMount() {
-    const proxy = "https://thingproxy.freeboard.io/fetch/";
-    const rootURL = "http://api.musixmatch.com/ws/1.1/";
+    const proxy = ""//"https://thingproxy.freeboard.io/fetch/";
+    const rootURL = "ws/1.1/"//"http://api.musixmatch.com/ws/1.1/";
     const apiMethod =
       "chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1";
     axios
