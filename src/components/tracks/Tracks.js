@@ -11,8 +11,11 @@ class Tracks extends Component {
       <Consumer>
         {value => {
           const { track_list, heading } = value;
-          if (track_list === undefined || track_list.length === 0) {
+          if (track_list === undefined) {
             return <Spinner />;
+          } else if (track_list.length === 0) {
+            return <h3 className="text-center mb-4">No results.</h3>
+
           } else {
             console.log(value);
             return (
@@ -20,9 +23,9 @@ class Tracks extends Component {
                 <h3 className="text-center mb-4">{heading}</h3>
                 <div className="row">
                   {// render a Track component for each one. a key is required
-                  track_list.map(item => (
-                    <Track key={item.track.track_id} track={item.track} />
-                  ))}
+                    track_list.map(item => (
+                      <Track key={item.track.track_id} track={item.track} />
+                    ))}
                 </div>
               </React.Fragment>
             );
