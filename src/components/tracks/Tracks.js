@@ -10,14 +10,12 @@ class Tracks extends Component {
     return (
       <Consumer>
         {value => {
-          const { track_list, heading } = value;
-          if (track_list === undefined) {
+          const { track_list, heading, searchingFinished } = value;
+          if (!searchingFinished || track_list === undefined) {
             return <Spinner />;
-          } else if (track_list.length === 0) {
+          } else if (searchingFinished && track_list.length === 0) {
             return <h3 className="text-center mb-4">No results.</h3>
-
           } else {
-            console.log(value);
             return (
               <React.Fragment>
                 <h3 className="text-center mb-4">{heading}</h3>

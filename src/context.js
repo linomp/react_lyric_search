@@ -11,9 +11,19 @@ const reducer = (state, action) => {
     case "SEARCH_TRACKS":
       return {
         ...state,
+        searchingFinished: true,
         track_list: action.payload,
         heading: "Search Results"
       };
+
+    case "BEGIN_SEARCH":
+      return {
+        ...state,
+        searchingFinished: false,
+        track_list: [],
+      };
+
+
     default:
       return state;
   }
@@ -22,6 +32,7 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   // this state gets passed down to any consumer
   state = {
+    searchingFinished: false,
     track_list: [],
     heading: "Top 10 Tracks",
     // this will allow us to have a reducer which manipulates the global state
@@ -33,7 +44,7 @@ export class Provider extends Component {
   };
 
   componentDidMount() {
-    const proxy = "https://cors-anywhere.herokuapp.com/";
+    const proxy = "https://thingproxy.freeboard.io/fetch/";
     const rootURL = "http://api.musixmatch.com/ws/1.1/";
     const apiMethod =
       "chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1";
@@ -44,7 +55,7 @@ export class Provider extends Component {
       )
       .then(res => {
         //console.log(res.data);
-        this.setState({ track_list: res.data.message.body.track_list });
+        this.setState({ searchingFinished: true, track_list: res.data.message.body.track_list });
       })
       .catch(err => console.log(err));
   }

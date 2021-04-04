@@ -23,17 +23,16 @@ export default class Search extends Component {
 
   findTrack = (dispatch, e) => {
     e.preventDefault();
-    const proxy = "https://cors-anywhere.herokuapp.com/";
+    const proxy = "https://thingproxy.freeboard.io/fetch/";
     const rootURL = "http://api.musixmatch.com/ws/1.1/";
-    const apiMethod = `track.search?page_size=10&s_track_rating=desc&q_track=${
-      this.state.trackTitle
-    }`;
+    const apiMethod = `track.search?page_size=10&s_track_rating=desc&q_track=${this.state.trackTitle
+      }`;
     // send in empty list to clear out track_list from Tracks state and force it to render the Spinner
     // until the get request returns the data
     dispatch({
-      type: "SEARCH_TRACKS",
-      payload: []
+      type: "BEGIN_SEARCH"
     });
+
     axios
       .get(
         proxy + rootURL + apiMethod + `&apikey=${process.env.REACT_APP_MM_KEY}`,
