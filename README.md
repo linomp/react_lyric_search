@@ -1,5 +1,7 @@
 # React Lyric Search App
 A front-end built with React connected to the musixmatch API.
-The Context API is used for state management.  
-Full lyrics are available under paid plans; my API key is just for dev purposes. 
+
+- Context API is used for state management.  
+- App static build is deployed to Gh Pages.
+
 Tutorial by Brad Traversy.
