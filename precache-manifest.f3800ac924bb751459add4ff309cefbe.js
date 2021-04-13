@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "abefeb8225c7ac15381c",
+    "revision": "e5af9907e1a7d9dcd4d5",
     "url": "/react_lyric_search/static/css/main.3b74b38f.chunk.css"
   },
   {
-    "revision": "abefeb8225c7ac15381c",
-    "url": "/react_lyric_search/static/js/main.abefeb82.chunk.js"
+    "revision": "e5af9907e1a7d9dcd4d5",
+    "url": "/react_lyric_search/static/js/main.e5af9907.chunk.js"
   },
   {
     "revision": "c7297baa8492057013c6",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/react_lyric_search/static/js/runtime~main.bfabf815.js"
   },
   {
-    "revision": "f3aae973d612f54f760964583d14ede6",
+    "revision": "871e56fab19cded02252486b72bb75fe",
     "url": "/react_lyric_search/index.html"
   }
 ];
