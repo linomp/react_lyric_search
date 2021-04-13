@@ -16,8 +16,8 @@ export default class Lyrics extends Component {
   };
 
   componentDidMount() {
-    const proxy = "https://cors-anywhere.herokuapp.com/";
-    const rootURL = "http://api.musixmatch.com/ws/1.1/";
+    const proxy = process.env.REACT_APP_MY_CORS_ANYWHERE_PROXY;
+    const rootURL = process.env.REACT_APP_API_ROOT_URL;
     // get id parameter from the URL
     const trackId = this.props.match.params.id;
     const apiLyricsMethod = `track.lyrics.get?track_id=${trackId}`;
@@ -27,9 +27,9 @@ export default class Lyrics extends Component {
     axios
       .get(
         proxy +
-          rootURL +
-          apiLyricsMethod +
-          `&apikey=${process.env.REACT_APP_MM_KEY}`,
+        rootURL +
+        apiLyricsMethod +
+        `&apikey=${process.env.REACT_APP_MM_KEY}`,
         { crossdomain: true }
       )
       .then(res => {
@@ -39,9 +39,9 @@ export default class Lyrics extends Component {
         return axios
           .get(
             proxy +
-              rootURL +
-              apiTrackInfoMethod +
-              `&apikey=${process.env.REACT_APP_MM_KEY}`,
+            rootURL +
+            apiTrackInfoMethod +
+            `&apikey=${process.env.REACT_APP_MM_KEY}`,
             { crossdomain: true }
           )
           .then(res => {
@@ -89,7 +89,7 @@ export default class Lyrics extends Component {
               <strong>Song Genre</strong>:{" "}
               {track.primary_genres.music_genre_list.length > 0
                 ? track.primary_genres.music_genre_list[0].music_genre
-                    .music_genre_name
+                  .music_genre_name
                 : "n/a"}
             </li>
             <li className="list-group-item">

@@ -23,10 +23,9 @@ export default class Search extends Component {
 
   findTrack = (dispatch, e) => {
     e.preventDefault();
-    const proxy = ""//"https://thingproxy.freeboard.io/fetch/";
-    const rootURL = "/ws/1.1/";//"http://api.musixmatch.com/ws/1.1/";
-    const apiMethod = `track.search?page_size=10&s_track_rating=desc&q_track=${this.state.trackTitle
-      }`;
+    const proxy = process.env.REACT_APP_MY_CORS_ANYWHERE_PROXY;
+    const rootURL = process.env.REACT_APP_API_ROOT_URL;
+    const apiMethod = `track.search?page_size=10&s_track_rating=desc&q_track=${this.state.trackTitle}`;
     // send in empty list to clear out track_list from Tracks state and force it to render the Spinner
     // until the get request returns the data
     dispatch({
